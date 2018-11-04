@@ -1,0 +1,19 @@
+<h2>Clients</h2>
+<ul class="clients">
+  <li *ngFor="let client of clients">
+    <span>{{client.firstName | uppercase}} Details</span>
+    <div>
+      <span>id: </span>{{client.id}}
+    </div>
+    <div>
+      <span>Last name: </span>{{client.lastName}}
+    </div>
+    <div>
+      <span>Address: </span>{{client.address}}
+    </div>
+    <div>
+      <span>Phone numbers: </span>{{client.cvsPhoneNumbers}}
+    </div>
+
+  </li>
+</ul>
