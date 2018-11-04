@@ -11,20 +11,22 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs");
-var ClientService = /** @class */ (function () {
-    function ClientService(http, baseUrl) {
+var ClientTasksService = /** @class */ (function () {
+    function ClientTasksService(http, baseUrl) {
         this.http = http;
         this.baseUrl = baseUrl;
     }
-    ClientService.prototype.getClients = function () {
-        var clients;
-        return this.http.get(this.baseUrl + 'api/Client');
+    ClientTasksService.prototype.getTasks = function () {
+        return this.http.get(this.baseUrl + 'api/ClientTasks');
     };
-    ClientService = __decorate([
+    ClientTasksService.prototype.getClientTasks = function (id) {
+        return this.http.get(this.baseUrl + 'api/ClientTasks/GetClientsTasks/' + id);
+    };
+    ClientTasksService = __decorate([
         core_1.Injectable(),
         __param(1, core_1.Inject('BASE_URL'))
-    ], ClientService);
-    return ClientService;
+    ], ClientTasksService);
+    return ClientTasksService;
 }());
-exports.ClientService = ClientService;
-//# sourceMappingURL=client.service.js.map
+exports.ClientTasksService = ClientTasksService;
+//# sourceMappingURL=client-tasks.service.js.map

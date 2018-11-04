@@ -10,9 +10,14 @@ import { ClientService } from '../services/client.service';
 
 export class ClientsComponent implements OnInit {
   clients: Client[];
+  selectedClient: Client;
   constructor(private clientService: ClientService) {
-    this.clientService.getClients('').subscribe(data => this.clients = data);
+   
   }
-
-  ngOnInit() {}
+  onSelect(client: Client): void {
+    this.selectedClient = client;
+  }
+  ngOnInit() {
+    this.clientService.getClients().subscribe(data => this.clients = data);
+  }
 }

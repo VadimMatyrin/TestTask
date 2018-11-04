@@ -28,7 +28,9 @@
     <None Remove="ClientApp\src\app\app.module.ts" />
     <None Remove="ClientApp\src\app\app.module.ts" />
     <None Remove="ClientApp\src\app\client-task\clientTask.ts" />
+    <None Remove="ClientApp\src\app\client-task\clientTasks.component.ts" />
     <None Remove="ClientApp\src\app\client\client.ts" />
+    <None Remove="ClientApp\src\app\services\client-tasks.service.ts" />
     <None Remove="ClientApp\src\app\services\client.service.ts" />
     <None Remove="testtask.mdf" />
     <None Remove="testtask_log.ldf" />
@@ -36,8 +38,10 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\client-task\clientTasks.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\client-task\clientTask.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\client\client.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\client-tasks.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\client.service.ts" />
   </ItemGroup>
 

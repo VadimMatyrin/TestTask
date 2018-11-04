@@ -6,15 +6,17 @@ import { ClientTask } from '../client-task/clientTask'
 import 'rxjs';
 
 @Injectable()
-export class ClientService {
+export class ClientTasksService {
   constructor(
     private http: HttpClient,
-    @Inject('BASE_URL') private baseUrl: string 
+    @Inject('BASE_URL') private baseUrl: string
   ) { }
 
-  getClients() {
-    var clients: Client[];
-    return this.http.get<Client[]>(this.baseUrl + 'api/Client');
+  getTasks() {
+    return this.http.get<ClientTask[]>(this.baseUrl + 'api/ClientTasks');
   }
 
+  getClientTasks(id: number) {
+    return this.http.get<ClientTask[]>(this.baseUrl + 'api/ClientTasks/GetClientsTasks/' + id);
+  }
 }

@@ -11,8 +11,10 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/common/http");
 var router_1 = require("@angular/router");
-var app_component_1 = require("./app.component");
+var clientTasks_component_1 = require("./client-task/clientTasks.component");
 var clients_component_1 = require("./client/clients.component");
+var app_component_1 = require("./app.component");
+var client_tasks_service_1 = require("./services/client-tasks.service");
 var client_service_1 = require("./services/client.service");
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -21,7 +23,8 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                clients_component_1.ClientsComponent
+                clients_component_1.ClientsComponent,
+                clientTasks_component_1.ClientTasksComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +34,7 @@ var AppModule = /** @class */ (function () {
                     { path: 'clients', component: clients_component_1.ClientsComponent },
                 ])
             ],
-            providers: [client_service_1.ClientService],
+            providers: [client_service_1.ClientService, client_tasks_service_1.ClientTasksService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

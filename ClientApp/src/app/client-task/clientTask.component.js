@@ -7,25 +7,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var ClientsComponent = /** @class */ (function () {
-    function ClientsComponent(clientService) {
+var ClientTasksComponent = /** @class */ (function () {
+    function ClientTasksComponent(clientService) {
         this.clientService = clientService;
     }
-    ClientsComponent.prototype.onSelect = function (client) {
-        this.selectedClient = client;
-    };
-    ClientsComponent.prototype.ngOnInit = function () {
+    ClientTasksComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.clientService.getClients().subscribe(function (data) { return _this.clients = data; });
+        this.clientService.getClientTasks(this.clientId).subscribe(function (data) { return _this.clientTasks = data; });
     };
-    ClientsComponent = __decorate([
+    __decorate([
+        core_1.Input()
+    ], ClientTasksComponent.prototype, "clientId", void 0);
+    ClientTasksComponent = __decorate([
         core_1.Component({
-            selector: 'app-clients',
-            templateUrl: './clients.component.html',
-            styleUrls: ['./clients.component.css']
+            selector: 'app-client-tasks',
+            templateUrl: './client-tasks.component.html',
+            styleUrls: ['./client-tasks.component.css']
         })
-    ], ClientsComponent);
-    return ClientsComponent;
+    ], ClientTasksComponent);
+    return ClientTasksComponent;
 }());
-exports.ClientsComponent = ClientsComponent;
-//# sourceMappingURL=clients.component.js.map
+exports.ClientTasksComponent = ClientTasksComponent;
+//# sourceMappingURL=clientTask.component.js.map

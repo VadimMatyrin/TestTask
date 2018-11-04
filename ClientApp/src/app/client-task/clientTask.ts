@@ -2,7 +2,7 @@ export class ClientTask {
   id: number;
   taskName: string;
   description: string;
-  startTime: string;
-  endTime: string;
+  startTime: Date;
+  endTime: Date;
   clientId: number;
 }
