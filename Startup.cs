@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TestTask.Models;
 
 namespace TestTask
 {
@@ -27,6 +29,9 @@ namespace TestTask
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            var token = Configuration.GetSection("ConnectionString:default");
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(token.Value));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
