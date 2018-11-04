@@ -9,7 +9,7 @@ using TestTask.Models;
 
 namespace TestTask.Migrations
 {
-    [DbContext(typeof(ApplicationContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20181104105640_init")]
     partial class init
     {

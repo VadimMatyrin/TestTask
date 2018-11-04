@@ -31,7 +31,7 @@ namespace TestTask
             });
 
             var token = Configuration.GetSection("ConnectionString:default");
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(token.Value));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(token.Value));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

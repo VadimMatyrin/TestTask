@@ -19,12 +19,18 @@ export class ClientTasksComponent{
   @Input()
   set clientId(clientId: number) {
     this._clientId = clientId;
-    this.clientTasksService.getClientTasks(this._clientId).subscribe(data => this.clientTasks = data);
+    this.updateData();
   }
   clientTasks: ClientTask[];
   constructor(private clientTasksService: ClientTasksService) {
 
   }
+  onSelect(clientTask: ClientTask): void {
+    this.clientTasksService.deleteClientTask(clientTask.id).subscribe(data => this.updateData());
+  }
 
+  updateData() {
+    this.clientTasksService.getClientTasks(this._clientId).subscribe(data => this.clientTasks = data);
+  }
 }
 

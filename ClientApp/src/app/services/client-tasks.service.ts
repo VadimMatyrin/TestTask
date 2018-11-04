@@ -19,4 +19,8 @@ export class ClientTasksService {
   getClientTasks(id: number) {
     return this.http.get<ClientTask[]>(this.baseUrl + 'api/ClientTasks/GetClientsTasks/' + id);
   }
+
+  deleteClientTask(id: number) {
+    return this.http.delete(this.baseUrl + 'api/ClientTasks/' + id);
+  }
 }

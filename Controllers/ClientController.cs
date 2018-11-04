@@ -13,8 +13,8 @@ namespace TestTask.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        private readonly ApplicationContext _appContext;
-        public ClientController(ApplicationContext appContext)
+        private readonly ApplicationDbContext _appContext;
+        public ClientController(ApplicationDbContext appContext)
         {
             _appContext = appContext;
         }
@@ -59,9 +59,9 @@ namespace TestTask.Controllers
         [HttpDelete("{id}")]
         public async void Delete(int id)
         {
-            var client = Get(id);
+            var client = await Get(id);
 
-            _appContext.Remove(client);
+            _appContext.Clients.Remove(client);
             await _appContext.SaveChangesAsync();
         }
     }

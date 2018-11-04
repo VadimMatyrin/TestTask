@@ -17,13 +17,20 @@ var ClientTasksComponent = /** @class */ (function () {
             return this._clientId;
         },
         set: function (clientId) {
-            var _this = this;
             this._clientId = clientId;
-            this.clientTasksService.getClientTasks(this._clientId).subscribe(function (data) { return _this.clientTasks = data; });
+            this.updateData();
         },
         enumerable: true,
         configurable: true
     });
+    ClientTasksComponent.prototype.onSelect = function (clientTask) {
+        var _this = this;
+        this.clientTasksService.deleteClientTask(clientTask.id).subscribe(function (data) { return _this.updateData(); });
+    };
+    ClientTasksComponent.prototype.updateData = function () {
+        var _this = this;
+        this.clientTasksService.getClientTasks(this._clientId).subscribe(function (data) { return _this.clientTasks = data; });
+    };
     __decorate([
         core_1.Input()
     ], ClientTasksComponent.prototype, "clientId", null);

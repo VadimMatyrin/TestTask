@@ -22,6 +22,9 @@ var ClientTasksService = /** @class */ (function () {
     ClientTasksService.prototype.getClientTasks = function (id) {
         return this.http.get(this.baseUrl + 'api/ClientTasks/GetClientsTasks/' + id);
     };
+    ClientTasksService.prototype.deleteClientTask = function (id) {
+        return this.http.delete(this.baseUrl + 'api/ClientTasks/' + id);
+    };
     ClientTasksService = __decorate([
         core_1.Injectable(),
         __param(1, core_1.Inject('BASE_URL'))
