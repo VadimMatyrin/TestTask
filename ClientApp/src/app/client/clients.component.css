@@ -1,3 +1,12 @@
+ul{
+ list-style: decimal;
+}
 ul li{
   cursor:pointer;
+}
+.clientCities{
+  padding-left: 20px;
+}
+.clientFirstnames {
+  padding-left: 20px;
 }

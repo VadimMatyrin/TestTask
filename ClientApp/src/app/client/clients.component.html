@@ -32,7 +32,7 @@
   </div>
   <ul class="clients">
     <li *ngFor="let client of clients" (click)="onSelect(client)">
-      <span><b>{{client.firstName}}</b></span>
+      <strong>{{client.firstName}}</strong>
       <div>
         <span>id: </span>{{client.id}}
       </div>
@@ -45,7 +45,6 @@
       <div>
         <span>Phone numbers: </span>{{client.csvPhoneNumbers}}
       </div>
-
     </li>
   </ul>
 </div>
