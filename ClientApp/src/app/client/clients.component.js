@@ -10,28 +10,37 @@ var core_1 = require("@angular/core");
 var ClientsComponent = /** @class */ (function () {
     function ClientsComponent(clientService) {
         this.clientService = clientService;
-        this.selectedCity = 'Any';
+        this.selectedCity = '';
+        this.selectedFirstname = '';
     }
     ClientsComponent.prototype.onSelect = function (client) {
         this.selectedClient = client;
     };
     ClientsComponent.prototype.onCitySelect = function (city) {
-        var _this = this;
+        this.getData(city, this.selectedFirstname);
         this.selectedCity = city;
-        this.clientService.getClients(city).subscribe(function (data) { return _this.clients = data; });
-        if (city === '')
-            this.selectedCity = 'Any';
+        this.selectedClient = null;
+    };
+    ClientsComponent.prototype.onFirstnameSelect = function (firstname) {
+        this.getData(this.selectedCity, firstname);
+        this.selectedFirstname = firstname;
+        this.selectedClient = null;
     };
     ClientsComponent.prototype.ngOnInit = function () {
-        this.getData();
+        this.getInitData();
     };
-    ClientsComponent.prototype.getData = function () {
+    ClientsComponent.prototype.getInitData = function () {
         var _this = this;
         this.clientService.getClients().subscribe(function (data) { return _this.bindInitData(data); });
+    };
+    ClientsComponent.prototype.getData = function (city, firstname) {
+        var _this = this;
+        this.clientService.getClients(city, firstname).subscribe(function (data) { return _this.clients = data; });
     };
     ClientsComponent.prototype.bindInitData = function (data) {
         this.clients = data;
         this.clientCities = this.clients.map(function (c) { return c.address; }).filter(function (el, i, a) { return i === a.indexOf(el); });
+        this.clientFirstnames = this.clients.map(function (c) { return c.firstName; }).filter(function (el, i, a) { return i === a.indexOf(el); });
     };
     ClientsComponent = __decorate([
         core_1.Component({

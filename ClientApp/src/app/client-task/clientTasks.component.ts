@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Client } from '../client/client';
 import { ClientTask } from './clientTask';
 import { HttpClient } from '@angular/common/http';
 import { ClientTasksService } from '../services/client-tasks.service';
@@ -12,17 +13,17 @@ import { List } from 'linqts';
 })
 
 export class ClientTasksComponent{
-  private _clientId: number;
+  private _client: Client;
 
-  get clientId(): number {
-    return this._clientId;
+  get client(): Client {
+    return this._client;
   }
   @Input()
-  set clientId(clientId: number) {
-    this._clientId = clientId;
+  set client(client: Client) {
+    this._client = client;
     this.updateData();
   }
-  clientTasks = new List<ClientTask>();
+  clientTasks:ClientTask[];
   constructor(private clientTasksService: ClientTasksService) {
 
   }
@@ -31,7 +32,7 @@ export class ClientTasksComponent{
   }
 
   updateData() {
-    this.clientTasksService.getClientTasks(this._clientId).subscribe(data => this.clientTasks = data);
+    this.clientTasksService.getClientTasks(this._client.id).subscribe(data => this.clientTasks = data);
   }
 }
 

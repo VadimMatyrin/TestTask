@@ -13,7 +13,7 @@ export class ClientService {
   ) { }
 
   getClients(city: string = '', firstName: string = '') {
-    return this.http.get<Client[]>(this.baseUrl + 'api/Client' + (city === '' ? '' : '?city=' + city) + (firstName === '' ? '' : '&?firstName=' + city));
+    return this.http.get<Client[]>(this.baseUrl + 'api/Client?' + (city === '' ? '' : 'city=' + city + '&') + (firstName === '' ? '' : 'firstName=' + firstName));
   }
 
 }

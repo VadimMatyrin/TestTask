@@ -3,5 +3,5 @@ export class Client {
   firstName: string;
   lastName: string;
   address: string;
-  cvsPhoneNumbers: string;
+  csvPhoneNumbers: string;
 }

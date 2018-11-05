@@ -1,4 +1,8 @@
-<h2>Client tasks</h2>
+<div class="row">
+  <div class="col-sm-12">
+    <span><b>Client:</b> {{_client.firstName + ' ' + _client.lastName}}</span>
+  </div>
+</div>
 <ul class="clientTasks">
   <li *ngFor="let task of clientTasks">
     <div class="row">
@@ -10,10 +14,10 @@
           <span>Description </span>{{task.description}}
         </div>
         <div>
-          <span>Start time: </span>{{task.startTime}}
+          <span>Start time: </span>{{task.startTime | date: 'dd/MM/yyyy hh:mm' }}
         </div>
         <div>
-          <span>Phone numbers: </span>{{task.endTime}}
+          <span>Phone numbers: </span>{{task.endTime | date: 'dd/MM/yyyy hh:mm' }}
         </div>
       </div>
       <div class="col-sm-2">

@@ -8,18 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var client_tasks_service_1 = require("../services/client-tasks.service");
-var linqts_1 = require("linqts");
 var ClientTasksComponent = /** @class */ (function () {
     function ClientTasksComponent(clientTasksService) {
         this.clientTasksService = clientTasksService;
-        this.clientTasks = new linqts_1.List();
     }
-    Object.defineProperty(ClientTasksComponent.prototype, "clientId", {
+    Object.defineProperty(ClientTasksComponent.prototype, "client", {
         get: function () {
-            return this._clientId;
+            return this._client;
         },
-        set: function (clientId) {
-            this._clientId = clientId;
+        set: function (client) {
+            this._client = client;
             this.updateData();
         },
         enumerable: true,
@@ -31,11 +29,11 @@ var ClientTasksComponent = /** @class */ (function () {
     };
     ClientTasksComponent.prototype.updateData = function () {
         var _this = this;
-        this.clientTasksService.getClientTasks(this._clientId).subscribe(function (data) { return _this.clientTasks = data; });
+        this.clientTasksService.getClientTasks(this._client.id).subscribe(function (data) { return _this.clientTasks = data; });
     };
     __decorate([
         core_1.Input()
-    ], ClientTasksComponent.prototype, "clientId", null);
+    ], ClientTasksComponent.prototype, "client", null);
     ClientTasksComponent = __decorate([
         core_1.Component({
             selector: 'app-client-tasks',
