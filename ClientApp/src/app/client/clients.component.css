@@ -4,6 +4,9 @@ ul{
 ul li{
   cursor:pointer;
 }
+.clients{
+  padding-left: 10px;
+}
 .clientCities{
   padding-left: 20px;
 }
