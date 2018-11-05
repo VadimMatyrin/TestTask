@@ -16,9 +16,10 @@ var ClientService = /** @class */ (function () {
         this.http = http;
         this.baseUrl = baseUrl;
     }
-    ClientService.prototype.getClients = function () {
-        var clients;
-        return this.http.get(this.baseUrl + 'api/Client');
+    ClientService.prototype.getClients = function (city, firstName) {
+        if (city === void 0) { city = ''; }
+        if (firstName === void 0) { firstName = ''; }
+        return this.http.get(this.baseUrl + 'api/Client' + (city === '' ? '' : '?city=' + city) + (firstName === '' ? '' : '&?firstName=' + city));
     };
     ClientService = __decorate([
         core_1.Injectable(),

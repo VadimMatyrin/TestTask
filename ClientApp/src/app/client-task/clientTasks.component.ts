@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ClientTask } from './clientTask';
 import { HttpClient } from '@angular/common/http';
 import { ClientTasksService } from '../services/client-tasks.service';
+import { List } from 'linqts';
 
 @Component({
   selector: 'app-client-tasks',
@@ -21,7 +22,7 @@ export class ClientTasksComponent{
     this._clientId = clientId;
     this.updateData();
   }
-  clientTasks: ClientTask[];
+  clientTasks = new List<ClientTask>();
   constructor(private clientTasksService: ClientTasksService) {
 
   }

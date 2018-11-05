@@ -2,7 +2,8 @@ import { Injectable, Inject } from '@angular/core';
 import { Response } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Client } from '../client/client';
-import { ClientTask } from '../client-task/clientTask'
+import { ClientTask } from '../client-task/clientTask';
+import { List } from 'linqts';
 import 'rxjs';
 
 @Injectable()
@@ -13,11 +14,11 @@ export class ClientTasksService {
   ) { }
 
   getTasks() {
-    return this.http.get<ClientTask[]>(this.baseUrl + 'api/ClientTasks');
+    return this.http.get<List<ClientTask>>(this.baseUrl + 'api/ClientTasks');
   }
 
   getClientTasks(id: number) {
-    return this.http.get<ClientTask[]>(this.baseUrl + 'api/ClientTasks/GetClientsTasks/' + id);
+    return this.http.get<List<ClientTask>>(this.baseUrl + 'api/ClientTasks/GetClientsTasks/' + id);
   }
 
   deleteClientTask(id: number) {

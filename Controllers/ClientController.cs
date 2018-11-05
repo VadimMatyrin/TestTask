@@ -20,9 +20,13 @@ namespace TestTask.Controllers
         }
         // GET: api/Client
         [HttpGet]
-        public async Task<IEnumerable<Client>> Get()
+        public async Task<IEnumerable<Client>> Get([FromQuery]string city = "", [FromQuery] string firstName ="")
         {
-            var clients = await _appContext.Clients.ToListAsync();
+            var clients = await _appContext
+                .Clients
+                .Where(c => c.Address.Contains(city) && 
+                            c.FirstName.Contains(firstName))
+                            .ToListAsync();
             return clients;
         }
 

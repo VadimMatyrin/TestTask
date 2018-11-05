@@ -1,5 +1,18 @@
 <div class='col-sm-3'>
   <h2>Clients</h2>
+  <div class="row">
+    <div class="dropdown">
+      <div class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+       {{selectedCity}}
+      </div>
+      <ul class="dropdown-menu clientCities">
+        <li *ngFor="let city of clientCities" (click)="onCitySelect(city)">
+          <span>{{city}}</span>
+        </li>
+        <li (click)="onCitySelect('')">Any</li>
+      </ul>
+    </div>
+  </div>
   <ul class="clients">
     <li *ngFor="let client of clients" (click)="onSelect(client)">
       <span>{{client.firstName | uppercase}} Details</span>

@@ -8,9 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var client_tasks_service_1 = require("../services/client-tasks.service");
+var linqts_1 = require("linqts");
 var ClientTasksComponent = /** @class */ (function () {
     function ClientTasksComponent(clientTasksService) {
         this.clientTasksService = clientTasksService;
+        this.clientTasks = new linqts_1.List();
     }
     Object.defineProperty(ClientTasksComponent.prototype, "clientId", {
         get: function () {
