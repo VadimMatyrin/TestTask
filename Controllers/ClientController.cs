@@ -60,15 +60,17 @@ namespace TestTask.Controllers
 
         // POST: api/Client
         [HttpPost]
-        public void Post([FromBody] Client client)
+        public async void Post([FromBody] Client client)
         {
+            await _appContext.Clients.AddAsync(client);
+            await _appContext.SaveChangesAsync();
         }
 
         // PUT: api/Client/5
         [HttpPut]
         public async void Put([FromBody] Client client)
         {
-            await _appContext.AddAsync(client);
+            await _appContext.Clients.AddAsync(client);
             await _appContext.SaveChangesAsync();
         }
 

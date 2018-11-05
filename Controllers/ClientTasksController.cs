@@ -49,15 +49,17 @@ namespace TestTask.Controllers
         }
         // POST: api/ClientTasks
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async void Post([FromBody] ClientTask clientTask)
         {
+            await _appContext.ClientTasks.AddAsync(clientTask);
+            await _appContext.SaveChangesAsync();
         }
 
         // PUT: api/ClientTasks
         [HttpPut]
         public async void Put([FromBody] ClientTask clientTask)
         {
-            await _appContext.AddAsync(clientTask);
+            await _appContext.ClientTasks.AddAsync(clientTask);
             await _appContext.SaveChangesAsync();
         }
 
