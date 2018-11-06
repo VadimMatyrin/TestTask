@@ -33,10 +33,10 @@ namespace TestTask.Controllers
             else
             {
                 if(firstName is null)
-                    clients = await _appContext.Clients.Where(c => c.Address == city).ToListAsync();
+                    clients = await _appContext.Clients.Where(c => c.City == city).ToListAsync();
                 else
                     clients = await _appContext.Clients
-                        .Where(c => c.Address == city && c.FirstName == firstName)
+                        .Where(c => c.City == city && c.FirstName == firstName)
                         .ToListAsync();
             }
 
@@ -66,7 +66,7 @@ namespace TestTask.Controllers
             await _appContext.SaveChangesAsync();
         }
 
-        // PUT: api/Client/5
+        // PUT: api/Client
         [HttpPut]
         public async void Put([FromBody] Client client)
         {
@@ -76,12 +76,12 @@ namespace TestTask.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public async void Delete(int id)
+        public void Delete(int id)
         {
-            var client = await Get(id);
+            var client = Get(id).Result;
 
             _appContext.Clients.Remove(client);
-            await _appContext.SaveChangesAsync();
+            _appContext.SaveChanges();
         }
     }
 }

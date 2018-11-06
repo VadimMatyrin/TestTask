@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="dropdown">
-        <span>Name:</span>
+        <span>City:</span>
         <div class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
           {{ (selectedCity === '') ? 'Any': selectedCity }}
         </div>
@@ -17,7 +17,7 @@
     </div>
     <div class="col-sm-6">
       <div class="dropdown">
-        <span>City:</span>
+        <span>Name:</span>
         <div class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
           {{ (selectedFirstname === '') ? 'Any': selectedFirstname }}
         </div>
@@ -40,7 +40,7 @@
         <span>Last name: </span>{{client.lastName}}
       </div>
       <div>
-        <span>City: </span>{{client.address}}
+        <span>City: </span>{{client.city}}
       </div>
       <div>
         <span>Phone numbers: </span>{{client.csvPhoneNumbers}}

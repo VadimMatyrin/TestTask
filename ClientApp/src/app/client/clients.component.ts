@@ -44,7 +44,7 @@ export class ClientsComponent implements OnInit {
   }
   bindInitData(data) {
     this.clients = data;
-    this.clientCities = this.clients.map(c => c.address).filter((el, i, a) => i === a.indexOf(el));
+    this.clientCities = this.clients.map(c => c.city).filter((el, i, a) => i === a.indexOf(el));
     this.clientFirstnames = this.clients.map(c => c.firstName).filter((el, i, a) => i === a.indexOf(el));
   }
 }

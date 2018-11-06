@@ -39,7 +39,7 @@ var ClientsComponent = /** @class */ (function () {
     };
     ClientsComponent.prototype.bindInitData = function (data) {
         this.clients = data;
-        this.clientCities = this.clients.map(function (c) { return c.address; }).filter(function (el, i, a) { return i === a.indexOf(el); });
+        this.clientCities = this.clients.map(function (c) { return c.city; }).filter(function (el, i, a) { return i === a.indexOf(el); });
         this.clientFirstnames = this.clients.map(function (c) { return c.firstName; }).filter(function (el, i, a) { return i === a.indexOf(el); });
     };
     ClientsComponent = __decorate([

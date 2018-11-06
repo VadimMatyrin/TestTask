@@ -63,11 +63,11 @@ namespace TestTask.Controllers
             await _appContext.SaveChangesAsync();
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/ClientTasks/5
         [HttpDelete("{id}")]
-        public async void Delete(int id)
+        public void Delete(int id)
         {
-            var task = Get(id).GetAwaiter().GetResult();
+            var task = Get(id).Result;
 
             _appContext.ClientTasks.Remove(task);
             _appContext.SaveChanges();
