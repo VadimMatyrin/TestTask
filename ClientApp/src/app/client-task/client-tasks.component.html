@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-12">
+    <span><b>Client:</b> {{_client.firstName + ' ' + _client.lastName}}</span>
+    <span><b>Address:</b> {{_client.city }}</span>
+  </div>
+</div>
+<ul class="clientTasks">
+  <li *ngFor="let task of clientTasks">
+    <div class="row">
+      <div class="col-sm-10 clientTask">
+        <div>
+          <strong>id: </strong>{{task.id}}
+        </div>
+        <div>
+          <strong>Description </strong>{{task.description}}
+        </div>
+        <div>
+          <strong>Start time: </strong>{{task.startTime | date: 'dd/MM/yyyy hh:mm' }}
+        </div>
+        <div>
+          <strong>Phone numbers: </strong>{{task.endTime | date: 'dd/MM/yyyy hh:mm' }}
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <button (click)="onSelect(task)" class="btn btn-default">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </div>
+    </div>
+  </li>
+</ul>

@@ -13,16 +13,33 @@ namespace TestTask.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        private readonly ApplicationContext _appContext;
-        public ClientController(ApplicationContext appContext)
+        private readonly ApplicationDbContext _appContext;
+        public ClientController(ApplicationDbContext appContext)
         {
             _appContext = appContext;
         }
         // GET: api/Client
         [HttpGet]
-        public async Task<IEnumerable<Client>> Get()
+        public async Task<IEnumerable<Client>> Get([FromQuery]string city, [FromQuery] string firstName)
         {
-            var clients = await _appContext.Clients.ToListAsync();
+            IEnumerable<Client> clients;
+            if(city is null)
+            {
+                if (firstName is null)
+                    clients = await _appContext.Clients.ToListAsync();
+                else
+                    clients = await _appContext.Clients.Where(c => c.FirstName == firstName).ToListAsync();
+            }
+            else
+            {
+                if(firstName is null)
+                    clients = await _appContext.Clients.Where(c => c.City == city).ToListAsync();
+                else
+                    clients = await _appContext.Clients
+                        .Where(c => c.City == city && c.FirstName == firstName)
+                        .ToListAsync();
+            }
+
             return clients;
         }
 
@@ -43,26 +60,28 @@ namespace TestTask.Controllers
 
         // POST: api/Client
         [HttpPost]
-        public void Post([FromBody] Client client)
+        public async void Post([FromBody] Client client)
         {
+            await _appContext.Clients.AddAsync(client);
+            await _appContext.SaveChangesAsync();
         }
 
-        // PUT: api/Client/5
+        // PUT: api/Client
         [HttpPut]
         public async void Put([FromBody] Client client)
         {
-            await _appContext.AddAsync(client);
+            await _appContext.Clients.AddAsync(client);
             await _appContext.SaveChangesAsync();
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public async void Delete(int id)
+        public void Delete(int id)
         {
-            var client = Get(id);
+            var client = Get(id).Result;
 
-            _appContext.Remove(client);
-            await _appContext.SaveChangesAsync();
+            _appContext.Clients.Remove(client);
+            _appContext.SaveChanges();
         }
     }
 }

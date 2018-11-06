@@ -8,7 +8,7 @@ using TestTask.Models;
 
 namespace TestTask.Migrations
 {
-    [DbContext(typeof(ApplicationContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -25,11 +25,11 @@ namespace TestTask.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
+                    b.Property<string>("CSVPhoneNumbers")
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<string>("CSVPhoneNumbers")
+                    b.Property<string>("City")
                         .IsRequired()
                         .HasMaxLength(100);
 

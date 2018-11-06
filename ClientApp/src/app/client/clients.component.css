@@ -1,0 +1,15 @@
+ul{
+ list-style: decimal;
+}
+ul li{
+  cursor:pointer;
+}
+.clients{
+  padding-left: 10px;
+}
+.clientCities{
+  padding-left: 20px;
+}
+.clientFirstnames {
+  padding-left: 20px;
+}

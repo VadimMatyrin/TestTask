@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace TestTask.Models
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
         public DbSet<Client> Clients { get; set; }
         public DbSet<ClientTask> ClientTasks { get; set; }
-        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Client>().HasMany(c => c.ClientTasks).WithOne(ct => ct.Client);
+            base.OnModelCreating(modelBuilder); 
         }
     }
 }

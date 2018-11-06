@@ -13,8 +13,8 @@ namespace TestTask.Controllers
     [ApiController]
     public class ClientTasksController : ControllerBase
     {
-        private readonly ApplicationContext _appContext;
-        public ClientTasksController(ApplicationContext appContext)
+        private readonly ApplicationDbContext _appContext;
+        public ClientTasksController(ApplicationDbContext appContext)
         {
             _appContext = appContext;
         }
@@ -49,26 +49,28 @@ namespace TestTask.Controllers
         }
         // POST: api/ClientTasks
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async void Post([FromBody] ClientTask clientTask)
         {
+            await _appContext.ClientTasks.AddAsync(clientTask);
+            await _appContext.SaveChangesAsync();
         }
 
         // PUT: api/ClientTasks
         [HttpPut]
         public async void Put([FromBody] ClientTask clientTask)
         {
-            await _appContext.AddAsync(clientTask);
+            await _appContext.ClientTasks.AddAsync(clientTask);
             await _appContext.SaveChangesAsync();
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/ClientTasks/5
         [HttpDelete("{id}")]
-        public async void Delete(int id)
+        public void Delete(int id)
         {
-            var task = Get(id);
+            var task = Get(id).Result;
 
-            _appContext.Remove(task);
-            await _appContext.SaveChangesAsync();
+            _appContext.ClientTasks.Remove(task);
+            _appContext.SaveChanges();
         }
     }
 }

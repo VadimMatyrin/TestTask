@@ -10,8 +10,8 @@ using TestTask.Models;
 namespace TestTask.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181104105640_init")]
-    partial class init
+    [Migration("20181106143056_AddressToCityClient")]
+    partial class AddressToCityClient
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,11 +27,11 @@ namespace TestTask.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
+                    b.Property<string>("CSVPhoneNumbers")
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<string>("CSVPhoneNumbers")
+                    b.Property<string>("City")
                         .IsRequired()
                         .HasMaxLength(100);
 
@@ -58,15 +58,15 @@ namespace TestTask.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(30);
+                        .HasMaxLength(300);
 
-                    b.Property<DateTime>("EnmdTime");
+                    b.Property<DateTime>("EndTime");
 
                     b.Property<DateTime>("StartTime");
 
                     b.Property<string>("TaskName")
                         .IsRequired()
-                        .HasMaxLength(30);
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 

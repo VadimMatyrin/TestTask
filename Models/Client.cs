@@ -17,7 +17,7 @@ namespace TestTask.Models
         public string LastName { get; set; }
         [Required]
         [MaxLength(100)]
-        public string Address { get; set; }
+        public string City { get; set; }
         [Required]
         [MaxLength(100)]
         public string CSVPhoneNumbers { get; set; }

@@ -1,0 +1,55 @@
+<div class='col-sm-3 col-sm-offset-1'>
+  <h2>Clients</h2>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="dropdown">
+        <span>City:</span>
+        <div class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+          {{ (selectedCity === '') ? 'Any': selectedCity }}
+        </div>
+        <ul class="dropdown-menu clientCities">
+          <li *ngFor="let city of clientCities" (click)="onCitySelect(city)">
+            <span>{{city}}</span>
+          </li>
+          <li (click)="onCitySelect('')">Any</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="dropdown">
+        <span>Name:</span>
+        <div class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+          {{ (selectedFirstname === '') ? 'Any': selectedFirstname }}
+        </div>
+        <ul class="dropdown-menu clientFirstnames">
+          <li *ngFor="let firstname of clientFirstnames" (click)="onFirstnameSelect(firstname)">
+            <span>{{firstname}}</span>
+          </li>
+          <li (click)="onFirstnameSelect('')">Any</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ul class="clients">
+    <li *ngFor="let client of clients" (click)="onSelect(client)">
+      <strong>{{client.firstName}}</strong>
+      <div>
+        <span>id: </span>{{client.id}}
+      </div>
+      <div>
+        <span>Last name: </span>{{client.lastName}}
+      </div>
+      <div>
+        <span>City: </span>{{client.city}}
+      </div>
+      <div>
+        <span>Phone numbers: </span>{{client.csvPhoneNumbers}}
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h2>Client tasks</h2>
+    <app-client-tasks  *ngIf="selectedClient" class='col-sm-8' [client]="selectedClient"></app-client-tasks>
+</div>
+
